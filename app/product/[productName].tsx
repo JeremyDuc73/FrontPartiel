@@ -12,8 +12,8 @@ export default function ProductName()
     const [product, setProduct] = useState<Product>()
     const [counter, setCounter] = useState(1);
     const [initialCount, setInitialCount] = useState(1);
+    const [returnedId, setReturnedId] = useState(0)
 
-    const [image, setImage] = useState("")
 
     const handleInitialCountChange = (value: any) => {
         setInitialCount(Number(value));
@@ -28,6 +28,7 @@ export default function ProductName()
             .then((response)=>{
                 console.log("product fetched")
                 setProduct(response.data)
+                setReturnedId(response.data.id)
                 console.log(response.data)
             })
     }
@@ -69,7 +70,7 @@ export default function ProductName()
                 <Link
                     href={{
                         pathname: "/cart/[addToCart]",
-                        params: { productId: product?.id, quantity: counter}
+                        params: { addToCart: returnedId, quantity: counter}
                     }}
                     asChild
                 >

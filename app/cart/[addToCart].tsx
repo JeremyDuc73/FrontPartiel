@@ -5,10 +5,10 @@ import {useEffect} from "react";
 
 export default function AddToCart()
 {
-    const {productId, quantity} = useLocalSearchParams()
+    const {addToCart, quantity} = useLocalSearchParams()
 
-    const addToCart = async () => {
-        return await axiosPrepared.post(Globals.baseUrl+"cart/add/"+productId+"/"+quantity)
+    const add = async () => {
+        return await axiosPrepared.post(Globals.baseUrl+"cart/add/"+addToCart+"/"+quantity)
             .then((response)=>{
                 console.log("product added")
 
@@ -18,7 +18,7 @@ export default function AddToCart()
     useRouter().navigate('../scanner')
 
     useEffect(() => {
-        addToCart()
+        add()
 
     }, [])
 }
