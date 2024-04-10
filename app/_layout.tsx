@@ -54,6 +54,7 @@ function RootLayoutNav() {
         <Stack.Screen name="home" options={{headerShown: false}}/>
         <Stack.Screen name="product/[productName]" options={{title: "Product page"}}/>
         <Stack.Screen name="cartShow" options={{title: "Cart"}}/>
+        <Stack.Screen name="myorders" options={{title: "My Orders"}}/>
       </Stack>
     </ThemeProvider>
   );
