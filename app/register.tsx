@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useRouter} from "expo-router";
 import axios from "axios";
-import {Button, TextInput} from "react-native";
+import {Button, SafeAreaView, StyleSheet, TextInput} from "react-native";
 
 
 export default function Register()
@@ -27,17 +27,37 @@ export default function Register()
     }
 
     return (
-        <>
+        <SafeAreaView style={styles.container}>
             <TextInput
                 value={email}
+                style={styles.input}
+                placeholder="email"
+                autoCapitalize="none"
                 onChangeText={text => setEmail(text)}
             />
             <TextInput
                 value={password}
                 secureTextEntry
+                style={styles.input}
+                placeholder="password"
+                autoCapitalize="none"
                 onChangeText={text => setPassword(text)}
             />
             <Button title="REGISTER" onPress={register}/>
-        </>
+        </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    container : {
+        flex: 1,
+        justifyContent: 'center',
+        marginHorizontal: 16
+    },
+    input : {
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+        marginBottom: 30
+    }
+})
